@@ -24,7 +24,9 @@ void swap(T* a, T* b)
   *b = tmp;
 }
 ```
-e il suo utilizzo:
+Per ogni invocazione con diversi _parametri di template_, il compilatore genera
+una nuova funzione che si dice _specializzata_; come vedremo dopo, questo
+dettaglio ha delle conseguenze importanti.
 ```c++
 int a = 3;
 int b = 5;
@@ -34,8 +36,49 @@ char c1 = 'b';
 char c2 = 'z';
 swap<char>(&c1, &c2);
 ```
-Per ogni invocazione con diversi _parametri di template_, il compilatore genera
-una nuova funzione che si dice _specializzata_; come vedremo dopo, questo
-dettaglio ha delle conseguenze importanti.
+> **Note** La funzione swap esiste effettivamente nella standard library, solo
+> che i parametri sono dei reference: [std::swap](http://en.cppreference.com/w/cpp/algorithm/swap)
 
+## Template di classi
+Oltre che a funzioni generiche, è possibile ottenere tipi aggregati che siano
+generici:
+```c++
+#include <iostream>
+
+template <typename T>
+class AccessCounter
+{
+private:
+  int count;
+  T variable;
+
+public:
+  AccessCounter(const T& value)
+    variable(value),
+    count(0)
+  {}
+
+  T& accessVariable()
+  {
+    count++;
+    return variable;
+  }
+
+  int getCount() const
+  {
+    return count;
+  }
+};
+
+int main()
+{
+  using namespace std;
+
+  AccessCounter<int> ac(42);
+
+  ac.accessVariable() = 43;
+  ac.accessVariable();
+  cout << ac.getCount() << endl; // output: 2
+}
+```
 
