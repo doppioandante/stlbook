@@ -1,7 +1,7 @@
 ## Cos'è la STL
 La STL fa parte della libreria standard del C++ già a partire dalla prima
 standardizzazione (1998) e raccoglie strutture dati implementate come _classi
-template_ (da cui il nome).
+template_ (da cui il nome).<br>
 Come vedremo in seguito, la STL offre al programmatore una serie di _container_, che
 rappresentano le strutture dati astratte, su cui è possibile lavorare con
 un'interfaccia uniforme attraverso gli _iterator_; molti degli algoritmi
