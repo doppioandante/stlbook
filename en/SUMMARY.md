@@ -1,4 +1,4 @@
-* [Introduzione](introduzione.md)
-* Prerequisiti
-    * [I template](prerequisiti/template.md)
+* [Introduction](introduction.md)
+* Prerequisites
+    * [Templates](prerequisites/templates)
 
