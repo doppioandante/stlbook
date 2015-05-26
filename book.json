@@ -1,5 +1,5 @@
 {
     "gitbook": ">=2.0.0" 
-    ,"plugins": ["richquotes"]
+    ,"plugins": ["richquotes", "include"]
 }
 

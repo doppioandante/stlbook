@@ -30,79 +30,12 @@ da stdin e di volerlo stampare con ordinamento decrescente.
 
 In C si potrebbe procedere così:
 ```c
-#include <stdio.h>
-#include <stdlib.h>
-
-int decreasing_cmp(const void* a, const void* b)
-{
-  return *(int*)b - *(int*)a;
-}
-
-int main()
-{
-  int listCapacity = 1;
-  int listLength = 0;
-
-  int* list = malloc(sizeof(*list) * listCapacity);
-
-  // leggo i numeri
-  while (scanf("%d", &list[listLength]) != EOF)
-  {
-    listLength++;
-
-    // Se è necessario, incremento la grandezza della lista
-    if (listLength == listCapacity)
-    {
-      listCapacity *= 2;
-      list = realloc(list, sizeof(*list) * listCapacity);
-    }
-  }
-
-  // ordino i numeri in ordine decrescente
-  qsort(list, listLength, sizeof(*list), decreasing_cmp);
-
-  // stampo la lista ordinata
-  for (int i=0; i < listLength; i++)
-  {
-    printf("%d\n", list[i]);
-  }
-
-  free(list);
-  return 0;
-}
+!INCLUDE "../code/list1.c"
 ```
 
 A confronto, lo stesso codice in C++:
 ```c++
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <functional>
-#include <iterator>
-
-int main()
-{
-  using std::cin;
-  using std::cout;
-
-  std::vector<int> list;
-
-  int number;
-  while (cin >> number)
-  {
-    list.push_back(number);
-  }
-
-  std::sort(list.begin(), list.end(), std::greater<int>());
-
-  // creo un iteratore che stampi su standard output i numeri
-  // separati da un newline
-  std::ostream_iterator<int> outputIterator(cout, "\n");
-
-  // copio list su stdout attraverso outputIterator
-  std::copy(list.begin(), list.end(), outputIterator);
-  return 0;
-}
+!INCLUDE "../code/list2.cpp"
 ```
 
 Non è necessario capire a fondo i due codici per ora, ma confrontandoli
