@@ -13,12 +13,12 @@ int main()
 
   int* list = malloc(sizeof(*list) * listCapacity);
 
-  // leggo i numeri
+  // Read the numbers
   while (scanf("%d", &list[listLength]) != EOF)
   {
     listLength++;
 
-    // Se è necessario, incremento la grandezza della lista
+    // If necessary, increment list size
     if (listLength == listCapacity)
     {
       listCapacity *= 2;
@@ -26,10 +26,10 @@ int main()
     }
   }
 
-  // ordino i numeri in ordine decrescente
+  // order list in descending order
   qsort(list, listLength, sizeof(*list), decreasing_cmp);
 
-  // stampo la lista ordinata
+  // print the list
   for (int i=0; i < listLength; i++)
   {
     printf("%d\n", list[i]);

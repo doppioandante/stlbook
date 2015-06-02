@@ -19,11 +19,10 @@ int main()
 
   std::sort(list.begin(), list.end(), std::greater<int>());
 
-  // creo un iteratore che stampi su standard output i numeri
-  // separati da un newline
+  // create an iterator on stdout that will use newline as separator
   std::ostream_iterator<int> outputIterator(cout, "\n");
 
-  // copio list su stdout attraverso outputIterator
+  // copy list to stdout using std::copy
   std::copy(list.begin(), list.end(), outputIterator);
   return 0;
 }
